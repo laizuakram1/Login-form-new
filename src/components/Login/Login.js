@@ -1,7 +1,9 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import UseFirebase from '../../Hooks/UseFirebase';
 
 const Login = () => {
+    const {user, SignInGoogle} = UseFirebase();
     return (
         <div>
             <h2 className='text-center'>Login</h2>
@@ -25,6 +27,9 @@ const Login = () => {
                    Login
                 </Button>
             </Form>
+           <div className='text-center'>
+           <Button onClick={SignInGoogle} variant="link">Sign In with Google</Button>
+           </div>
         </div>
     );
 };
