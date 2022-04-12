@@ -34,4 +34,4 @@ const Register = () => {
     );
 };
 
-export default Register; <h3>Please Register now</h3>
+export default Register; 

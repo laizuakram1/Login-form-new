@@ -1,9 +1,22 @@
+import { getAuth } from 'firebase/auth';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import UseFirebase from '../../Hooks/UseFirebase';
+import app from '../../firebase.init';
+import {useSignInWithGoogle} from 'react-firebase-hooks/auth';
+
+
+// import UseFirebase from '../../Hooks/UseFirebase';
+
+const auth = getAuth(app);
 
 const Login = () => {
-    const {user, SignInGoogle} = UseFirebase();
+    /*this is my create hooks*/
+    // const {SignInGoogle} = UseFirebase(auth);
+
+    /* another way for using hooks. this is a react firebase hooks*/
+   const [signInWithGoogle] = useSignInWithGoogle(auth);
+   
+
     return (
         <div>
             <h2 className='text-center'>Login</h2>
@@ -28,10 +41,10 @@ const Login = () => {
                 </Button>
             </Form>
            <div className='text-center'>
-           <Button onClick={SignInGoogle} variant="link">Sign In with Google</Button>
+           <Button onClick={() =>signInWithGoogle()} variant="link">Sign In with Google</Button>
            </div>
         </div>
     );
 };
 
-export default Login;<h3>Please login now..</h3>
+export default Login;
